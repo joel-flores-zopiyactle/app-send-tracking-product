@@ -3,7 +3,11 @@
 @section('content')
 <div class="container">
 
-    @if (count($sends) > 0)
+    {{--  search product Form --}}
+    <x-form-search-folio></x-form-search-folio>
+   {{-- end search product Form --}}
+
+   @if (count($sends) > 0)
     <h3>Resultados de la busqueda</h3>
     <hr>
 
