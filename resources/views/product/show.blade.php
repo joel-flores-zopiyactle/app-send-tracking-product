@@ -7,11 +7,9 @@
         <h4>Detalles del envío</h4>
         <hr>
 
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
+        <div>
+            <x-alert-message></x-alert-message>
+        </div>
 
         <table class="table table-striped table-hover">
             <thead class=" table-dark">
@@ -83,6 +81,8 @@
            <input type="hidden" name="send_id" value="{{ $detailSend->id }}">
            <button type="submit" class="btn btn-sm btn-danger ml-2" onclick="return confirm('¿Estas seguro de elimar el envío?')">Eliminar</button>
        </form>
+
+       <a href="{{ route('show-comments-post', $detailSend->id) }}" class="btn btn-sm btn-primary  ml-2 mr-2">Ver Comentarios</a>
    </div>
 
 </div>

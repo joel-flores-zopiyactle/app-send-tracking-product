@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\send as Send;
 use App\tracking as Tracking;
 
@@ -69,9 +70,9 @@ class sendProductsController extends Controller
         $sendEdit->user_id = Auth::id();
 
         if ($sendEdit->save()) {
-            return back()->with('success', 'Envio registrado exitosamente!');;
+            return back()->with('success', 'Envio registrado exitosamente!');
         } else {
-            return back()->with('error', 'Fallo al dar de alta el envío!');;
+            return back()->with('error', 'Fallo al dar de alta el envío!');
         }
 
     }
@@ -161,22 +162,28 @@ class sendProductsController extends Controller
        }
     }
 
-    public function showTrack()
+    public function showTrack($id)
     {
-       return view('sends.track');
+        $tracking = Tracking::where('send_id', $id)->get();
+        $product = DB::table('sends')->select('product', 'product_output', 'arrival_product')
+                                    ->where('id', $id)->get();
+
+       return view('sends.track', compact('tracking','id', 'product'));
     }
 
     public function postStatusSend($id)
     {
         $tracking = Tracking::where('send_id', $id)->get();
-        return view('sends.comment-status-send', compact('tracking','id'));
+        $product = DB::table('sends')->select('product', 'product_output', 'arrival_product')
+                                    ->where('id', $id)->get();
+
+        return view('sends.comment-status-send', compact('tracking','id', 'product'));
     }
 
     public function searchFolio(Request $request)
     {
 
-        $send = Send::where('folio', $request->folio)->get();
-
-        return $send;
+        $sends = Send::where('folio', $request->folio)->get();
+        return view('sends.result-search-folio', compact('sends'));
     }
 }

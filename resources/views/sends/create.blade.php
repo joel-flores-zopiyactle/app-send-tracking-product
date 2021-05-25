@@ -7,17 +7,9 @@
             <h4>Registrar nuevo envío</h4>
             <hr>
             {{-- Message of status send --}}
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
-
-            @if (session('error'))
-                <div class="alert alert-danger">
-                    {{ session('error') }}
-                </div>
-            @endif
+            <div>
+                <x-alert-message></x-alert-message>
+            </div>
 
             {{-- end status send --}}
             <form action="{{ route('save') }}" method="post">

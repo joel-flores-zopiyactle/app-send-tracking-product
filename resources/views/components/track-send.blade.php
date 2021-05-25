@@ -1,36 +1,25 @@
  {{--  track --}}
- <div class="row justify-content-center" id="search-form">
-    <div class="col-md-6">
-         <h3>Rastreo del producto: <strong>Celular S35</strong></h3>
+ <div class="row justify-content-center" id="tracking">
+    <div class="col-md-11">
+         <h4>Rastreo del producto: <strong>{{$product[0]->product}}</strong></h4>
          <p>
-             <small>Origen: Zongolica - Destino: Cordoba</small>
+             <small>Origen: {{$product[0]->product_output}} - Destino: {{$product[0]->arrival_product}}</small>
          </p>
          <hr>
 
          <div>
-             <ul>
-                 <li>Salio el producto
-                     <ul>
-                         <li>Salio: 11:30 pm - Zongolica</li>
-                     </ul>
-                     <hr>
-                 </li>
-
-                 <li>Llego el producto a la taquilla Tequila
-                     <ul>
-                         <li>llego: 12:30 pm - Tequila</li>
-                     </ul>
-                     <hr>
-                 </li>
-
-                 <li>Nuevamente el producto esta encamino
-                     <ul>
-                         <li> salio: 12:30 pm - Tequila</li>
-                     </ul>
-                     <hr>
-                 </li>
-             </ul>
-         </div>
+            <ul class="list-group">
+                @foreach ($trackingSend as $track)
+                    <li class="mb-2">
+                        {{$track->comment}}
+                        <ul>
+                            <li>Hora publicado: {{$track->created_at}}</li>
+                        </ul>
+                    </li>
+                    <hr>
+                @endforeach
+            </ul>
+        </div>
     </div>
 </div>
 {{-- end track --}}

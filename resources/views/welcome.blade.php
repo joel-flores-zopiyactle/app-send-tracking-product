@@ -8,7 +8,10 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+
+        {{-- CDN Bootstrap --}}
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
         <!-- Styles -->
         <style>
             html, body {
@@ -51,37 +54,60 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .bg-img {
+                width:100%;
+                height: 100vh;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-image: url({{asset('img/bg-box.jpg')}});
+                background-color: rgba(0, 0, 0, 0.7);
+                /*filter: grayscale(0.5) blur(2px);*/
+
+            }
+
+            .bg-card-search {
+                background-color: rgba(255, 255, 255, 0.8);
+                filter: none;
+                z-index: 100;
+            }
         </style>
     </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+    <body class="bg-img">
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+        <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
+            <a class="navbar-brand" href="#">AppSendTracking</a>
+            <div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                      @if (Route::has('login'))
+                          <div class="navbar-nav">
+                              @auth
+                                  <a class="nav-link" href="{{ url('/home') }}">Inicio</a>
+                              @else
+                                  <a class="nav-link" href="{{ route('login') }}">Iniciar sesión</a>
+                                  @if (Route::has('register'))
+                                      <a class="nav-link" href="{{ route('register') }}">Registro</a>
+                                  @endif
+                              @endauth
+                          </div>
+                      @endif
+                  </div>
+            </div>
+        </nav>
+        <div class="d-flex justify-content-center align-items-center" style="height: 500px;">
+            <div class="container">
+                <div class="bg-card-search p-4 rounded">
+                    <div class="d-flex justify-content-center h1 mb-2">
+                        <b>{{'_Rastrear el producto_'}}</b>
+                    </div>
 
-            <div class="content">
-                <div class="h1 m-b-md">
-                    {{'_Rastrear el producto_'}}
-                </div>
-
-                <div>
-                    {{-- track form of seach folio --}}
-                    <form action="#" method="post">
-                        <div class="form-group d-flex">
-                            <input type="search" name="search_product" id="seacrh_product" class="form-control" placeholder="Ingrese el folio del producto..." required>
-                            <button class="btn btn-success">Buscar</button>
-                        </div>
-                    </form>
+                    <div class="">
+                        {{-- track form of seach folio --}}
+                        <x-form-search-folio></x-form-search-folio>
+                    </div>
                 </div>
             </div>
         </div>

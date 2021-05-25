@@ -7,34 +7,14 @@
    <hr>
 
     {{-- Message of status send --}}
-    @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
+    <div>
+        <x-alert-message></x-alert-message>
     </div>
-   @endif
-
-   @if (session('error'))
-       <div class="alert alert-danger">
-           {{ session('error') }}
-       </div>
-   @endif
 
    <div class="row justify-content-center" id="search-form">
         {{-- List status of send --}}
         <div class="col-md-5">
-            <div>
-                <ul class="list-group">
-                    @foreach ($tracking as $track)
-                        <li class="mb-2">
-                            {{$track->comment}}
-                            <ul>
-                                <li>Hora publicado: {{$track->created_at}}</li>
-                            </ul>
-                        </li>
-                        <hr>
-                    @endforeach
-                </ul>
-            </div>
+            <x-track-send :trackingSend="$tracking" :product="$product"></x-track-send>
         </div>
 
         {{-- end status send--}}

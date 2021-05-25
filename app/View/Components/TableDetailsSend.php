@@ -4,19 +4,17 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class TrackSend extends Component
+class TableDetailsSend extends Component
 {
-    public $trackingSend;
-    public $product;
+    public $sends;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($trackingSend, $product)
+    public function __construct($sends)
     {
-        $this->trackingSend = $trackingSend;
-        $this->product = $product;
+        $this->sends = $sends;
     }
 
     /**
@@ -26,6 +24,6 @@ class TrackSend extends Component
      */
     public function render()
     {
-        return view('components.track-send');
+        return view('components.table-details-send');
     }
 }
