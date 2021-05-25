@@ -8,7 +8,7 @@
    </div>
 
    <div class="text-center">
-       <a href="{{ route('show-form-commnet',$id) }}" class="btn btn-success rounded-pill">Comentar del servicio</a>
+       <a href="{{ route('show-form-commnet',$id) }}" class="btn btn-success rounded-pill">Comentar del servicio o producto</a>
    </div>
    {{-- end track --}}
 

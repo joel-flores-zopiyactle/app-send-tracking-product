@@ -83,6 +83,15 @@
                     <input type="text" name="price" id="price" class="form-control" value="{{ old('price') }}" placeholder="Precio..." required>
                 </div>
 
+                <div class="form-group">
+                    <hr>
+                    <label for="comment">Seguimiento del envío:</label>
+                    <textarea name="comment" id="" cols="1" rows="2" class="form-control @error('comment') is-invalid @enderror" value="{{ old('comment') }}" placeholder="Ingrese el estado del envío"></textarea>
+                    @error('comment')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
                 <div class="form-group mt-3 float-right">
                     <a href="{{ route('home') }}" class="btn btn-outline-secondary mr-2">Cancelar</a>
                     <button type="submit" class="btn btn-success ml-3">Envíar</button>

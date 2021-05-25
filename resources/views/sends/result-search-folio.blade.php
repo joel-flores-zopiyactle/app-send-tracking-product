@@ -13,7 +13,10 @@
 
     <x-table-details-send :sends="$sends"></x-table-details-send>
     @else
-        <h2>No hay resultados de la busqueda</h2>
+        <div class="alert alert-warning" role="alert">
+            <h2>No hay resultados de la busqueda</h2>
+        </div>
+
     @endif
 
 </div>

@@ -10,7 +10,7 @@
             </button> --}}
 
             <div class="input-group mb-3">
-                <input type="search" name="folio" placeholder="Ingrese el folio de su envió"class="form-control" placeholder="Buscar producto por folio ..." required>
+                <input type="search" name="folio" placeholder="Ingrese el folio del envío..."class="form-control" required>
                 <div class="input-group-prepend">
                     <button class="btn btn-light">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">

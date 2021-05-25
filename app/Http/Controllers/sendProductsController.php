@@ -52,25 +52,36 @@ class sendProductsController extends Controller
             'product_output' => ['required', 'min:4'],
             'arrival_product' => ['required', 'min:4'],
             'price' => ['required'],
+            'comment' => ['required', 'min:15'],
         ]);
 
-        $sendEdit = new Send();
+        $send = new Send();
 
-        $sendEdit->folio = $request->folio;
-        $sendEdit->product = $request->product;
-        $sendEdit->client = $request->client;
-        $sendEdit->provider = $request->provider;
-        $sendEdit->date_send = $request->date_send;
-        $sendEdit->hour_send = $request->hour_send;
-        $sendEdit->date_arrival = $request->date_arrival;
-        $sendEdit->product_output = $request->product_output;
-        $sendEdit->arrival_product = $request->arrival_product;
-        $sendEdit->price = $request->price;
+        $send->folio = $request->folio;
+        $send->product = $request->product;
+        $send->client = $request->client;
+        $send->provider = $request->provider;
+        $send->date_send = $request->date_send;
+        $send->hour_send = $request->hour_send;
+        $send->date_arrival = $request->date_arrival;
+        $send->product_output = $request->product_output;
+        $send->arrival_product = $request->arrival_product;
+        $send->price = $request->price;
 
-        $sendEdit->user_id = Auth::id();
+        $send->user_id = Auth::id();
 
-        if ($sendEdit->save()) {
+        if ($send->save()) {
+
+            $track = new Tracking;
+
+            $track->comment = $request->comment;
+            $track->user_id = Auth::id();
+            $track->send_id = $send->id;
+
+            $track->save();
+
             return back()->with('success', 'Envio registrado exitosamente!');
+
         } else {
             return back()->with('error', 'Fallo al dar de alta el envío!');
         }
