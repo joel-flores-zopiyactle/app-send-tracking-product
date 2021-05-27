@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Editar-detalles-del-envío
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -64,7 +68,7 @@
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="product_output">Ubicación salida del producto:</label>
-                        <input type="text" name="product_output" id="product_output" class="form-control @error('product_output') is-invalid @enderror" value="{{ $send->product_output }}" placeholder="Ubicación..." required>
+                        <input type="text" name="product_output" id="product_output" class="form-control @error('product_output') is-invalid @enderror" value="{{ $send->departure_location }}" placeholder="Ubicación..." required>
 
                         @error('product_output')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -73,7 +77,7 @@
 
                     <div class="form-group col-md-6">
                         <label for="arrival_product">Ubicación llegada del producto:</label>
-                        <input type="text" name="arrival_product" id="arrival_product" class="form-control @error('arrival_product') is-invalid @enderror" value="{{ $send->arrival_product }}" placeholder="Ubicación llegada del producto..." required>
+                        <input type="text" name="arrival_product" id="arrival_product" class="form-control @error('arrival_product') is-invalid @enderror" value="{{ $send->arrival_location }}" placeholder="Ubicación llegada del producto..." required>
 
                         @error('arrival_product')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -83,11 +87,11 @@
 
                 <div class="form-group">
                     <label for="price">Costo de envío:</label>
-                    <input type="text" name="price" id="price" class="form-control" value="{{$send->price }}" placeholder="Precio..." required>
+                    <input type="text" name="price" pattern="[0-9.]+" id="price" class="form-control" value="{{$send->price }}" placeholder="Precio..." required>
                 </div>
 
                 <div class="form-group mt-3 float-right">
-                    <a  href="{{ route('detail-send', $send->id) }}" class="btn btn-outline-secondary mr-2">Cancelar</a>
+                    <a  href="{{ route('detail-send', encrypt($send->id)) }}" class="btn btn-outline-secondary mr-2">Cancelar</a>
                     <button type="submit" class="btn btn-success ml-3">Actualizar datos</button>
                 </div>
 

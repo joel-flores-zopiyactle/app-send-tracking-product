@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+{{ __('Register') }}
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -27,6 +31,17 @@
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                             @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="code">{{ __('Codígo de administrador') }}</label>
+                            <input id="code" type="text" class="form-control @error('code') is-invalid @enderror" name="code" value="{{ old('code') }}" required autocomplete="code">
+
+                            @error('code')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

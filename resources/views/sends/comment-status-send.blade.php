@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Llevar-seguimiento
+@endsection
+
 @section('content')
 <div class="container">
    {{--  search product Form --}}

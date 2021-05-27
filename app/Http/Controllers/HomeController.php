@@ -26,7 +26,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $sends = Send::all();
+        $sends = Send::orderBy('id', 'desc')
+               ->take(15)
+               ->get();
+        //$sends = Send::all()->orderBy('id', 'DESC');
         return view('home', compact('sends'));
     }
 }

@@ -10,7 +10,11 @@
             </button> --}}
 
             <div class="input-group mb-3">
-                <input type="search" name="folio" placeholder="Ingrese el folio del envío..."class="form-control" required>
+                <input type="search" name="folio"
+                placeholder="Ingrese el folio del envío..."
+                class="form-control @error('folio') is-invalid @enderror"
+                required
+                >
                 <div class="input-group-prepend">
                     <button class="btn btn-light">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -20,5 +24,8 @@
                 </div>
             </div>
         </div>
+        @error('folio')
+                <div class="alert alert-danger"><small>{{ $message }}</small></div>
+        @enderror
     </form>
 </div>

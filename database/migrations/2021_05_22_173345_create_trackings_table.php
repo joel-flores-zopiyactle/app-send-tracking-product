@@ -16,13 +16,13 @@ class CreateTrackingsTable extends Migration
         Schema::create('trackings', function (Blueprint $table) {
             $table->id();
 
-            $table->text('comment');
+            $table->text('body');
 
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->unsignedBigInteger('send_id');
-            $table->foreign('send_id')->references('id')->on('sends');
+            $table->foreign('send_id')->references('id')->on('sends')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Rules\ValidateRoleAdmin;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -49,9 +50,14 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        //echo($data['code']);
+       /*  if($data['code'] != "TRACKING2021SEND") {
+            return back()->with('error', 'Fallo al eliminar el envío!');;
+        } */
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'code' => ['required', 'string', new ValidateRoleAdmin],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }

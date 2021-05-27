@@ -22,12 +22,13 @@ class CreateSendsTable extends Migration
             $table->string('date_send');
             $table->string('hour_send');
             $table->string('date_arrival');
-            $table->string('product_output');
-            $table->string('arrival_product');
+            $table->string('departure_location'); //Salida
+            $table->string('arrival_location'); //Destino
             $table->float('price', 8, 2);
+            $table->boolean('completed')->default(false);
 
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

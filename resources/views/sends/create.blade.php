@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Nuevo envío
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -31,12 +35,12 @@
 
                 <div class="form-group">
                     <label for="client">Cliente:</label>
-                    <input type="text" name="client" id="client" class="form-control" value="{{ old('client') }}" placeholder="Cliente..." required>
+                    <input type="text" name="client" id="client" class="form-control" value="{{ old('client') }}" placeholder="Nombre completo..." required>
                 </div>
 
                 <div class="form-group">
                     <label for="provider">Vendedor:</label>
-                    <input type="text" name="provider" id="provider" class="form-control" value="{{ old('provider') }}"  placeholder="Vendedor..." required>
+                    <input type="text" name="provider" id="provider" class="form-control" value="{{ old('provider') }}"  placeholder="Nombre completo..." required>
                 </div>
 
                 {{-- Group input of type date --}}
@@ -80,7 +84,7 @@
 
                 <div class="form-group">
                     <label for="price">Costo de envío:</label>
-                    <input type="text" name="price" id="price" class="form-control" value="{{ old('price') }}" placeholder="Precio..." required>
+                    <input type="text" pattern="[0-9.]+"  name="price" id="price" class="form-control" value="{{ old('price') }}" placeholder="Precio..." required>
                 </div>
 
                 <div class="form-group">

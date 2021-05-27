@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>  {{ config('app.name', 'Laravel') }}</title>
+
+        <link rel="shortcut icon" href="{{asset('img/icon-app.png')}}" type="image/x-icon">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
@@ -58,16 +60,16 @@
             .bg-img {
                 width:100%;
                 height: 100vh;
-                background-size: cover;
+                background-size: contain;
                 background-repeat: no-repeat;
                 background-image: url({{asset('img/bg-box.jpg')}});
-                background-color: rgba(0, 0, 0, 0.7);
+                background-color: rgba(0, 0, 0, 0);
                 /*filter: grayscale(0.5) blur(2px);*/
 
             }
 
             .bg-card-search {
-                background-color: rgba(255, 255, 255, 0.8);
+                background-color: rgba(0, 0, 0, 0.3);
                 filter: none;
                 z-index: 100;
             }
@@ -76,7 +78,7 @@
     <body class="bg-img">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
-            <a class="navbar-brand" href="#">AppSendTracking</a>
+            <a class="navbar-brand" href="#">  {{ config('app.name', 'Laravel') }}</a>
             <div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -100,8 +102,8 @@
         <div class="d-flex justify-content-center align-items-center" style="height: 500px;">
             <div class="container">
                 <div class="bg-card-search p-4 rounded">
-                    <div class="d-flex justify-content-center h1 mb-2">
-                        <b>{{'_Rastrear el producto_'}}</b>
+                    <div class="d-flex justify-content-center md:h1 sm:h3 h3 mb-2">
+                        <b class="text-white">{{'Rastrear el producto'}}</b>
                     </div>
 
                     <div class="">

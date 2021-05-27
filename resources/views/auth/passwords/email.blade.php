@@ -4,6 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}</a>
+                </div>
+            @endif
             <div class="card">
                 <div class="card-header">{{ __('Reset Password') }}</div>
 
@@ -14,8 +19,7 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
+                    <form method="get" action="{{ route('reset-password') }}">
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>

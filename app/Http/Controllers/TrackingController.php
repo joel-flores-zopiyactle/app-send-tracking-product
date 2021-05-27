@@ -18,9 +18,9 @@ class TrackingController extends Controller
 
         $track = new Tracking;
 
-        $track->comment = $request->description;
+        $track->body = $request->description;
         $track->user_id = Auth::id();
-        $track->send_id = $request->send_id;
+        $track->send_id = decrypt($request->send_id);
 
         if ($track->save()) {
             return back()->with('success', 'Mensaje registrado exitosamente!');
