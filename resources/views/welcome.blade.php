@@ -60,7 +60,8 @@
             .bg-img {
                 width:100%;
                 height: 100vh;
-                background-size: contain;
+                background-size: cover;
+                background-position-y: center;
                 background-repeat: no-repeat;
                 background-image: url({{asset('img/bg-box.jpg')}});
                 background-color: rgba(0, 0, 0, 0);

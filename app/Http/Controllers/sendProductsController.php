@@ -44,30 +44,30 @@ class sendProductsController extends Controller
 
         $validatedData = $request->validate([
             'folio' => ['required', 'unique:sends', 'max:255'],
-            'product' => ['required'],
-            'client' => ['required', 'min:3'],
-            'provider' => ['required', 'min:3'],
-            'date_send' => ['required'],
-            'hour_send' => ['required'],
-            'date_arrival' => ['required'],
-            'product_output' => ['required', 'min:4'],
-            'arrival_product' => ['required', 'min:4'],
-            'price' => ['required'],
-            'comment' => ['required', 'min:15'],
+            'producto' => ['required'],
+            'cliente' => ['required', 'min:3'],
+            'vendedor' => ['required', 'min:3'],
+            'fecha_envio' => ['required'],
+            'hora_envio' => ['required'],
+            'fecha_llegada' => ['required'],
+            'salida' => ['required', 'min:4'],
+            'llegada' => ['required', 'min:4'],
+            'precio' => ['required'],
+            'comentario' => ['required', 'min:15'],
         ]);
 
         $send = new Send();
 
         $send->folio = strtoupper($request->folio);
-        $send->product = ucfirst($request->product);
-        $send->client = ucwords($request->client);
-        $send->provider = ucwords($request->provider);
-        $send->date_send = $request->date_send;
-        $send->hour_send = $request->hour_send;
-        $send->date_arrival = $request->date_arrival;
-        $send->departure_location = ucfirst($request->product_output);
-        $send->arrival_location = ucfirst($request->arrival_product);
-        $send->price = $this->floatValue($request->price);
+        $send->product = ucfirst($request->producto);
+        $send->client = ucwords($request->cliente);
+        $send->provider = ucwords($request->vendedor);
+        $send->date_send = $request->fecha_envio;
+        $send->hour_send = $request->hora_envio;
+        $send->date_arrival = $request->fecha_llegada;
+        $send->departure_location = ucfirst($request->salida);
+        $send->arrival_location = ucfirst($request->llegada);
+        $send->price = $this->floatValue($request->precio);
 
         $send->user_id = Auth::id();
 
@@ -75,7 +75,7 @@ class sendProductsController extends Controller
 
             $track = new Tracking;
 
-            $track->body = $request->comment;
+            $track->body = $request->comentario;
             $track->user_id = Auth::id();
             $track->send_id = $send->id;
 
