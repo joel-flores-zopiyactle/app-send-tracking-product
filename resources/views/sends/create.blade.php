@@ -67,7 +67,7 @@
                         <label for="product_output">Ubicación salida del producto:</label>
                         <input type="text" name="salida" id="product_output" class="form-control @error('salida') is-invalid @enderror" value="{{ old('salida') }}" placeholder="Ubicación..." required>
 
-                        @error('product_output')
+                        @error('salida')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
@@ -76,7 +76,7 @@
                         <label for="arrival_product">Ubicación llegada del producto:</label>
                         <input type="text" name="llegada" id="arrival_product" class="form-control @error('llegada') is-invalid @enderror" value="{{ old('llegada') }}" placeholder="Ubicación llegada del producto..." required>
 
-                        @error('arrival_product')
+                        @error('llegada')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
